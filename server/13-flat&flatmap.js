@@ -15,3 +15,24 @@ for (let i = 0; i < matriz.length; i++) {
 const rta = matriz.flat(3);
 console.log("for", newArray);
 console.log("flat", rta);
+
+//
+const matrizReto= [
+    1,
+    [1,2,3],
+    [4,5,6],
+    [7,8,[9,10,[11,12]]]
+];
+
+const flatArray = (arr = [], data = []) => {
+    if(typeof arr !== 'object') return [arr];
+    arr.forEach(element => {
+        if (typeof element === 'object') {
+            flatArray(element, data);
+        } else {
+            data.push(element);
+        }
+    });
+    return data;
+}
+console.log(flatArray(matrizReto));
